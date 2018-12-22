@@ -1,7 +1,6 @@
 @extends('layouts.default')
 
 @section('content')
-阿斯顿发顺丰单
   <div class="jumbotron">
     <h1>Hello Laravel</h1>
     <p class="lead">
