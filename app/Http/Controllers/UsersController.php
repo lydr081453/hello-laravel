@@ -13,7 +13,7 @@ class UsersController extends Controller
     {
         //使用 Laravel 提供身份验证（Auth）中间件来过滤未登录用户的 edit, update 动作
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store']
+            'except' => ['show', 'create', 'store','index']
         ]);
 
         //只让未登录用户访问注册页面：
@@ -82,5 +82,12 @@ class UsersController extends Controller
     {
         $users = User::paginate(10);
         return view('users.index', compact('users'));
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        session()->flash('success', '成功删除用户！');
+        return back();
     }
 }
