@@ -51,4 +51,10 @@ class User extends Authenticatable
             $user->activation_token = str_random(30);
         });
     }
+
+    public function feed()
+    {
+        return $this->statuses()
+                    ->orderBy('created_at', 'desc');
+    }
 }
