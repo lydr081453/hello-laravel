@@ -41,4 +41,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Status::class);
     }
+
+    //生成的用户激活令牌
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->activation_token = str_random(30);
+        });
+    }
 }
